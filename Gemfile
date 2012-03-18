@@ -24,6 +24,7 @@ gem 'jquery-rails'
 
 # File upload
 gem 'carrierwave'
+gem 'mini_magick'
 
 # User Authentication
 gem 'devise'

@@ -1,4 +1,5 @@
 AnniversaryStage::Application.routes.draw do
+  resources :photos, :only => [:index, :show, :create]
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
