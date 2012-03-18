@@ -15,6 +15,10 @@ end
 # Heroku
 gem 'heroku'
 
+# App server
+gem 'unicorn'
+gem 'foreman'
+
 # Gems used only for assets and not required
 # in production environments by default.
 # group :assets do
@@ -47,9 +51,6 @@ gem 'devise'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
-
-# Use unicorn as the app server
-# gem 'unicorn'
 
 # Deploy with Capistrano
 # gem 'capistrano'
