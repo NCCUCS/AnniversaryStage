@@ -29,6 +29,7 @@ gem 'jquery-rails'
 
 # File upload
 gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick'
 
 # User Authentication

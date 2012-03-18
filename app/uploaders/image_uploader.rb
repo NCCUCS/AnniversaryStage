@@ -1,14 +1,15 @@
 # encoding: utf-8
 
 class ImageUploader < CarrierWave::Uploader::Base
-
-  # Include RMagick or MiniMagick support:
-  # include CarrierWave::RMagick
+  include CarrierWave::MimeTypes
   include CarrierWave::MiniMagick
 
-  # Choose what kind of storage to use for this uploader:
-  storage :file
-  # storage :fog
+  # Choose storage type
+  if Rails.env.production?
+    storage :fog
+  else
+    storage :file
+  end
 
   # Override the directory where uploaded files will be stored.
   # This is a sensible default for uploaders that are meant to be mounted:
@@ -23,6 +24,9 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process :resize_to_fit => [320, 320]
   end
+  
+  # mime-types
+  process :set_content_type
 
   # Whitelist
   def extension_white_list
