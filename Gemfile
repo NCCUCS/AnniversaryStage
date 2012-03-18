@@ -4,13 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.2'
 
 # Databases
-group :development do
-  gem 'sqlite3'
-end
-
-group :production do
-  gem 'pg'
-end
+gem 'pg'
 
 # Heroku
 gem 'heroku'
