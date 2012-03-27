@@ -4,6 +4,8 @@ class User < ActiveRecord::Base
   validates_uniqueness_of :email
   validates_presence_of :email
   
+  has_many :photos
+  
   def find_or_create_by_access_token(token)
     user = User.find_by_access_token token
     
