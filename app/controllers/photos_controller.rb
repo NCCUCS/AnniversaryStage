@@ -3,7 +3,7 @@ class PhotosController < ApplicationController
   before_filter :user_authentication, :only => [:create]
   
   def index
-    @photos = Photo.order('id DESC').paginate(:page => params[:page])
+    @photos = Photo.order('id DESC').page params[:page]
     
     render json: @photos
   end
