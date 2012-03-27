@@ -38,8 +38,8 @@ gem 'devise'
 # Pagination
 gem 'will_paginate', '~> 3.0'
 
-# User Authentication
-gem 'devise'
+# Facebook
+gem 'koala'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
