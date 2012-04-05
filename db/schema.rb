@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120405185418) do
+ActiveRecord::Schema.define(:version => 20120405191021) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.string   "resource_id",   :null => false
@@ -52,8 +52,12 @@ ActiveRecord::Schema.define(:version => 20120405185418) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.integer  "user_id"
+    t.float    "longitude"
+    t.float    "latitude"
   end
 
+  add_index "photos", ["latitude"], :name => "index_photos_on_latitude"
+  add_index "photos", ["longitude"], :name => "index_photos_on_longitude"
   add_index "photos", ["user_id"], :name => "index_photos_on_user_id"
 
   create_table "users", :force => true do |t|
