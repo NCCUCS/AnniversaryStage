@@ -7,16 +7,12 @@ class PhotosController < ApplicationController
       @place = Place.find params[:place_id]
       @photos = @place.photos.order('id DESC').page params[:page]
     else
-      @photos = Photo.order('id DESC').page params[:page]
+      @photos = Photo.includes(:user).order('id DESC').page params[:page]
     end
-    
-    render json: @photos
   end
   
   def show
-    @photo = Photo.find(params[:id])
-    
-    render json: @photo
+    @photo = Photo.includes(:user).find(params[:id])
   end
   
   def create

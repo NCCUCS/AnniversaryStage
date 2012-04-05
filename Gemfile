@@ -41,5 +41,5 @@ gem 'koala'
 # Admin
 gem 'activeadmin'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
+# JSON
+gem 'jbuilder'
