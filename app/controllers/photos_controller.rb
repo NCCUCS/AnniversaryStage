@@ -3,12 +3,7 @@ class PhotosController < ApplicationController
   before_filter :user_authentication, :only => [:create]
   
   def index
-    if params[:place_id]
-      @place = Place.find params[:place_id]
-      @photos = @place.photos.order('id DESC').page params[:page]
-    else
-      @photos = Photo.includes(:user).order('id DESC').page params[:page]
-    end
+    @photos = Photo.includes(:user).order('id DESC').page params[:page]
   end
   
   def show
