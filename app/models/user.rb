@@ -6,20 +6,17 @@ class User < ActiveRecord::Base
   
   has_many :photos
   
-  def find_or_create_by_access_token(token)
-    user = User.find_by_access_token token
+  def self.find_or_create_by_access_token(token)
+    graph = Koala::Facebook::API.new token
+    profile = graph.get_object "me"
+    fid = profile["id"]
     
-    unless user
-      graph = Koala::Facebook::API.new token
-      profile = graph.get_object "me"
-      email = profile["email"]
+    user = User.find_by_access_token(token) || User.find_or_create_by_fid(fid)
     
-      user = User.find_or_create_by_email email
-      user.fid = profile["id"]
-      user.name = profile["name"]
-      user.access_token = token
-      user.save
-    end
+    user.email = profile["email"]
+    user.name = profile["name"]
+    user.access_token = token
+    user.save
     
     user
   end
