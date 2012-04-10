@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   def self.find_or_create_by_access_token(token)
     graph = Koala::Facebook::API.new token
     profile = graph.get_object "me"
-    fid = profile["id"]
+    fid = profile["id"].to_i
     
     user = User.find_by_access_token(token) || User.find_or_create_by_fid(fid)
     
