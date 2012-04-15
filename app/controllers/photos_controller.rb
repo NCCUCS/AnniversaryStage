@@ -20,4 +20,8 @@ class PhotosController < ApplicationController
     end
   end
   
+  def locations
+    @photos = Photo.includes(:user).order('random()').page params[:page]
+  end
+  
 end

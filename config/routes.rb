@@ -3,8 +3,7 @@ AnniversaryStage::Application.routes.draw do
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
-  resources :photos, :only => [:index, :show, :create]
-  resources :places, :only => [:index] do
-    resources :photos, :only => [:index, :create]
-  end  
+  resources :photos, :only => [:index, :show, :create] do
+    get 'locations', :on => :collection
+  end
 end
